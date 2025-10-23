@@ -1,0 +1,25 @@
+.navContainer {
+    position: fixed;
+    top: 0;
+    display: flex;
+    background-color: whitesmoke;
+    width: 100vw;
+    justify-content: center;
+}
+
+.shopNav {
+    margin: 15px;
+    width: 50%;
+    height: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navLink {
+    color: black;
+
+    &:hover {
+        color: lightslategray;
+        border-bottom: 2px solid lightslategray;
+    }
+}
