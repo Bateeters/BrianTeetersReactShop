@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFakeStoreApiFunction } from "../../services/fakestoreapi";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 function Shop() {
     const [products, setProducts] = useState([]);
@@ -31,22 +32,7 @@ function Shop() {
             ) : (
                 <>
                     {products.map((item) => (
-                        <div key={item.id}
-                        style={{
-                            backgroundColor: "whitesmoke",
-                            border: "1px solid gray",
-                            borderRadius: "7px",
-                            margin: "55px",
-                            padding: "15px",
-                            width: "500px",
-                            color: "black"
-                        }}>
-                            <img src={item.image} alt={item.title} />
-                            <h2>{item.title}</h2>
-                            <p>${item.price}</p>
-                            <p>{item.description}</p>
-                            <h6>{item.rating.rate} / 5 - {item.rating.count} reviews</h6>
-                        </div>
+                        <ProductCard item={item}/>
                     ))}
                 </>
             )
