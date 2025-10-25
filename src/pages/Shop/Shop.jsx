@@ -13,7 +13,7 @@ function Shop() {
                 setProducts(productResults)
             } catch (err) {
                 console.log(err);
-                setError("Failed to load from API...")
+                setError("Oops! Looks like something went wrong. Let us check the back...")
             } finally {
                 setLoading(false)
             }
