@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getFakeStoreApiFunction } from "../../services/fakestoreapi";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import styles from "./Shop.module.css"
 
 function Shop() {
     const [products, setProducts] = useState([]);
@@ -30,11 +31,11 @@ function Shop() {
             {loading ? ( 
                 <h3>Loading Products...</h3> 
             ) : (
-                <>
+                <div className={styles.productDisplay}>
                     {products.map((item) => (
                         <ProductCard item={item}/>
                     ))}
-                </>
+                </div>
             )
             }
 

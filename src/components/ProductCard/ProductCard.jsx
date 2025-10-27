@@ -1,28 +1,37 @@
+import { useReducer } from "react";
+import Counter from "./Counter"
+import styles from "./ProductCard.module.css"
+
+function counterReducer(state, action) {
+    switch (action.type) {
+        case "increment": return {count: state.count +1};
+        case "decrement": return {count: state.count -1};
+        case "SET_COUNT": return {...state, count: action.payload};
+        default: return state;
+    }
+}
+
 function ProductCard(props) {
+    const [state, dispatch] = useReducer(counterReducer, {count:0});
+
     return (
-        <div key={props.item.id}
-            style={{
-                backgroundColor: "whitesmoke",
-                border: "1px solid gray",
-                borderRadius: "7px",
-                margin: "55px",
-                padding: "15px",
-                width: "500px",
-                color: "black"
-            }}>
-                <img src={props.item.image} alt={props.item.title} />
-                <h2>{props.item.title}</h2>
-                <p>${props.item.price}</p>
-                <div>
-                    <p>Quantity:</p>
-                    <button>+</button>
-                    <input type="number" />
-                    <button>-</button>
+        <div className={styles.gridSpace}>
+            <div key={props.item.id} className={styles.productCard}>
+                <div className={styles.productImgContainer}>
+                    <img src={props.item.image} alt={props.item.title} className={styles.productImg}/>
                 </div>
-                <button>Add to Cart</button>
-                <p>{props.item.description}</p>
-                <h6>{props.item.rating.rate} / 5 - {props.item.rating.count} reviews</h6>
+                <h3 className={styles.productTitle}>{props.item.title}</h3>
+                <div className={styles.priceQuantContainer}>
+                    <p className={styles.productPrice}>${props.item.price}</p>
+                    <Counter count={state.count} dispatch={dispatch}/>
+                </div>
+                <button className={styles.addCartBtn} onClick={() => console.log(`Added ${state.count} ${props.item.title} to cart.`)}>Add to Cart</button>
+                <div className={styles.reviewsContainer}>
+                    <p>{props.item.rating.rate} / 5</p>
+                    <p>{props.item.rating.count} reviews</p>
+                </div>
             </div>
+        </div>
     )
 };
 
