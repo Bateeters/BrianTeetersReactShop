@@ -1,6 +1,7 @@
-import { useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import Counter from "./Counter"
 import styles from "./ProductCard.module.css"
+import { CartContext } from "../../context/CartContext";
 
 function counterReducer(state, action) {
     switch (action.type) {
@@ -12,7 +13,23 @@ function counterReducer(state, action) {
 }
 
 function ProductCard(props) {
-    const [state, dispatch] = useReducer(counterReducer, {count:0});
+    const [counterState, counterDispatch] = useReducer(counterReducer, {count:0});
+
+    const {state: cartState, dispatch: cartDispatch} = useContext(CartContext);
+
+    // console.log the cart
+    useEffect(() => {
+        console.log(cartState.cart);
+    }, [cartState])
+
+    const addToCart = () => {
+        cartDispatch({
+            type:"ADD_ITEM",
+            payload: {...props.item, quantity: counterState.count || 1},
+        });
+
+        counterDispatch({ type: "SET_COUNT", payload: 0});
+    };
 
     return (
         <div className={styles.gridSpace}>
@@ -23,9 +40,9 @@ function ProductCard(props) {
                 <h3 className={styles.productTitle}>{props.item.title}</h3>
                 <div className={styles.priceQuantContainer}>
                     <p className={styles.productPrice}>${props.item.price}</p>
-                    <Counter count={state.count} dispatch={dispatch}/>
+                    <Counter count={counterState.count} dispatch={counterDispatch}/>
                 </div>
-                <button className={styles.addCartBtn} onClick={() => console.log(`Added ${state.count} ${props.item.title} to cart.`)}>Add to Cart</button>
+                <button className={styles.addCartBtn} onClick={addToCart}>Add to Cart</button>
                 <div className={styles.reviewsContainer}>
                     <p>{props.item.rating.rate} / 5</p>
                     <p>{props.item.rating.count} reviews</p>

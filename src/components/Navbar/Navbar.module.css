@@ -10,16 +10,41 @@
 .shopNav {
     margin: 15px;
     width: 50%;
-    height: 25px;
+    height: 40px;
     display: flex;
     justify-content: space-evenly;
 }
 
 .navLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: black;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 25px;
+    width: 75px;
+    font-weight: 700;
+    height: 25px;
 
     &:hover {
-        color: lightslategray;
-        border-bottom: 2px solid lightslategray;
+        background-color: black;
+        color: white;
     }
+}
+
+.cartNumber {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 25px;
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    right: -10px;
+    top: 10px;
 }
