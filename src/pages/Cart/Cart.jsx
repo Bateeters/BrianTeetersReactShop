@@ -7,6 +7,11 @@ function Cart() {
     const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = state.cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
 
+    function subTotal(price, quantity) {
+        const subTotalPrice = price*quantity;
+        return subTotalPrice.toFixed(2);
+    }
+
     return (
         <>
             <h1>Cart</h1>
@@ -17,7 +22,8 @@ function Cart() {
                         <img src={item.image} alt={item.title} style={{ maxHeight: "75px" }} />
                         <div>
                             <p>{item.title}</p>
-                            <p>${item.price}</p>
+                            <p>${item.price.toFixed(2)} x {item.quantity}</p>
+                            <p>${subTotal(item.price, item.quantity)}</p>
                         </div>
                         <Counter
                             count={item.quantity}

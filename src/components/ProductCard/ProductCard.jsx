@@ -39,7 +39,7 @@ function ProductCard(props) {
                 </div>
                 <h3 className={styles.productTitle}>{props.item.title}</h3>
                 <div className={styles.priceQuantContainer}>
-                    <p className={styles.productPrice}>${props.item.price}</p>
+                    <p className={styles.productPrice}>${props.item.price.toFixed(2)}</p>
                     <Counter
                     count={counterState.count}
                     onIncrement={() => counterDispatch({ type: "increment" })}
