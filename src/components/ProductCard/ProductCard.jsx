@@ -1,9 +1,9 @@
-import { useContext, useEffect, useReducer } from "react";
-import Counter from "./Counter"
-import styles from "./ProductCard.module.css"
-import { CartContext } from "../../context/CartContext";
+import { useEffect, useReducer } from "react";
+import Counter from "./Counter";
+import styles from "./ProductCard.module.css";
+import { useCart } from "../../context/CartContext";
 
-function counterReducer(state, action) {
+export function counterReducer(state, action) {
     switch (action.type) {
         case "increment": return {count: state.count +1};
         case "decrement": return {count: state.count -1};
@@ -13,9 +13,9 @@ function counterReducer(state, action) {
 }
 
 function ProductCard(props) {
-    const [counterState, counterDispatch] = useReducer(counterReducer, {count:0});
+    const [counterState, counterDispatch] = useReducer(counterReducer, {count:1});
 
-    const {state: cartState, dispatch: cartDispatch} = useContext(CartContext);
+    const {state: cartState, dispatch: cartDispatch} = useCart();
 
     // console.log the cart
     useEffect(() => {
@@ -28,7 +28,7 @@ function ProductCard(props) {
             payload: {...props.item, quantity: counterState.count || 1},
         });
 
-        counterDispatch({ type: "SET_COUNT", payload: 0});
+        counterDispatch({ type: "SET_COUNT", payload: 1});
     };
 
     return (
@@ -40,7 +40,11 @@ function ProductCard(props) {
                 <h3 className={styles.productTitle}>{props.item.title}</h3>
                 <div className={styles.priceQuantContainer}>
                     <p className={styles.productPrice}>${props.item.price}</p>
-                    <Counter count={counterState.count} dispatch={counterDispatch}/>
+                    <Counter
+                    count={counterState.count}
+                    onIncrement={() => counterDispatch({ type: "increment" })}
+                    onDecrement={() => counterDispatch({ type: "decrement" })}
+                    />
                 </div>
                 <button className={styles.addCartBtn} onClick={addToCart}>Add to Cart</button>
                 <div className={styles.reviewsContainer}>

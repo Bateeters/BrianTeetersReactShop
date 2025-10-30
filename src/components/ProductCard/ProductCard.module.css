@@ -67,6 +67,19 @@
     background-color: rgb(100, 131, 255);
     color: white;
   }
+
+  &:disabled {
+    opacity: .5;
+    border: none;
+    box-shadow: none;
+    color: lightgray;
+
+    &:hover {
+      background-color: #ebebeb;
+      border: none;
+      box-shadow: none;
+    }
+  }
 }
 
 .numInput {

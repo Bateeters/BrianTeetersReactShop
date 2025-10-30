@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom"
 import styles from './Navbar.module.css'
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 
 function Navbar() {
-    const {state, dispatch} = useContext(CartContext);
+    const {state, dispatch} = useCart();
     
     const totalItems = state?.cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 

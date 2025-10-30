@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 export const CartContext = createContext();
 
@@ -42,6 +42,13 @@ function CartReducer(state, action) {
             const updatedCart = [];
 
             return {...state, cart: updatedCart};
+        };
+        case "SET_QUANTITY": {
+            const { id, quantity } = action.payload;
+            const updatedCart = state.cart.map(item =>
+                item.id === id ? { ...item, quantity } : item
+            );
+            return { ...state, cart: updatedCart };
         }
 
         default: return state
@@ -62,5 +69,7 @@ function CartProvider({children}) {
         </CartContext.Provider>
     )
 }
+
+export const useCart = () => useContext(CartContext)
 
 export default CartProvider

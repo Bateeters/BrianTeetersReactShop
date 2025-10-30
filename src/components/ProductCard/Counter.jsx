@@ -1,19 +1,19 @@
 import styles from './ProductCard.module.css'
 
-function Counter({count, dispatch}) {
-
-    return(
+function Counter({ count, onIncrement, onDecrement }) {
+    return (
         <div className={styles.counterContainer}>
-            <button className={styles.counterBtn} onClick={() => dispatch({type: "increment"})}>+</button>
-            <input 
+            <button className={styles.counterBtn} onClick={onIncrement}>+</button>
+            <input
                 type="number"
-                value={count} 
-                onChange={(e) => dispatch({type: "SET_COUNT", payload: Number(e.target.value)})}
+                value={count}
+                readOnly
                 className={styles.numInput}
             />
-            <button className={styles.counterBtn} onClick={() => dispatch({type: "decrement"})} disabled={count===0}>-</button>
+            <button className={styles.counterBtn} onClick={onDecrement} disabled={count <= 1}>-</button>
         </div>
-    )
+    );
 }
+
 
 export default Counter;
