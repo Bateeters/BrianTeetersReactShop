@@ -27,7 +27,7 @@ function Home() {
     return (
         <>
             <div>
-                <img src="../public/24014336_6832220.jpg" alt="Header Image" style={{objectFit: "cover", width: "100%"}}/>
+                <img src="/24014336_6832220.jpg" alt="Header Image" style={{objectFit: "cover", width: "100%"}}/>
             </div>
             {error && <h3 style={{color: 'red'}}>{error}</h3>}
             {loading ? ( 

@@ -1,0 +1,34 @@
+.footer {
+    background-color: #101420;
+    color: rgb(255, 215, 56);
+    margin: 100px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10%;
+}
+
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 33%;
+}
+
+.footerLogo {
+    margin: 0;
+}
+
+.linkDisplay {
+    padding-bottom: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.footerLinks {
+    color: white;
+    padding: 10px 0;
+
+    &:hover {
+        color: gray;
+    }
+}

@@ -17,7 +17,7 @@ function Cart() {
     }
 
     return (
-        <div>
+        <div style={{width: "100vw"}}>
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "end", margin: "120px auto 50px", borderBottom: "1px solid black", width: "80%"}}>
                 <h2 style={{fontSize: "2rem", margin: "0"}}>Cart</h2>
                 <p style={{margin: "5px 0"}}>Total items: {totalItems}</p>
@@ -60,7 +60,7 @@ function Cart() {
                     </div>
                 ))}
             </ul>
-            <div className={styles.cartPriceDisplay} style={{borderTop: "1px solid black", margin: "0 70px", textAlign: "end"}}>
+            <div className={styles.cartPriceDisplay}>
                 {totalItems === 1 ? (
                     <p>Cart Subtotal: ({totalItems} item) ${totalPrice.toFixed(2)}</p>
                 ):(
