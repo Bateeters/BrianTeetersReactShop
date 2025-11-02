@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <Navbar/>
-      <h1>Shop App Test</h1>
       <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/shop" element={<Shop/>}/>

@@ -26,15 +26,20 @@ function Shop() {
 
     return (
         <>
-            <h1>Shop Page</h1>
+            
             {error && <h3 style={{color: 'red'}}>{error}</h3>}
             {loading ? ( 
-                <h3>Loading Products...</h3> 
+                <h3 style={{textAlign: "center", width: "100vw"}}>Loading Products...</h3> 
             ) : (
-                <div className={styles.productDisplay}>
-                    {products.map((item) => (
-                        <ProductCard item={item}/>
-                    ))}
+                <div>
+                    <div style={{display: "flex", justifyContent: "space-between", alignItems: "end", margin: "120px auto 50px", borderBottom: "1px solid black", width: "80%"}}>
+                        <h2 style={{fontSize: "2rem", margin: "0"}}>Shop</h2>
+                    </div>
+                    <div className={styles.productDisplay}>
+                        {products.map((item) => (
+                            <ProductCard item={item}/>
+                        ))}
+                    </div>
                 </div>
             )
             }

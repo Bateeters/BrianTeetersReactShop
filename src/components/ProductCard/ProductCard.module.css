@@ -1,8 +1,10 @@
 .gridSpace {
   width: 25%;
-  margin: 15px;
+  min-width: 275px;
+  margin: 1%;
   background-color: whitesmoke;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 10px lightgray;
   border-radius: 7px;
   color: black;
 }
